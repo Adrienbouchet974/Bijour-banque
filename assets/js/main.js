@@ -17,7 +17,8 @@ function active() {
         credit.classList.add("fade-in-top");
         main.classList.add("fade-in-top");
         credit.addEventListener("animationend", () => {
-            credit.classList.remove("fade-in-top")
+            credit.classList.remove("fade-in-top");
+            main.classList.remove("fade-in-top");
         });
         if(credit.classList.contains("active")){
             main.style.display = "none";
@@ -30,7 +31,8 @@ function active() {
         debit.classList.add("fade-in-right");
         main.classList.add("fade-in-right");
         debit.addEventListener("animationend", () => {
-            debit.classList.remove("fade-in-right")
+            debit.classList.remove("fade-in-right");
+            main.classList.remove("fade-in-right");
         });
         if(debit.classList.contains("active")){
             main.style.display = "none";
@@ -43,7 +45,8 @@ function active() {
         tout.classList.add("fade-in-left");
         main.classList.add("fade-in-left");
         tout.addEventListener("animationend", () => {
-            tout.classList.remove("fade-in-left")
+            tout.classList.remove("fade-in-left");
+            main.classList.remove("fade-in-left");
         });
         if(tout.classList.contains("active")){
             main.style.display = "";
