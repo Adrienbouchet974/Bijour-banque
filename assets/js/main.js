@@ -10,7 +10,7 @@ const tout = document.querySelector("#tout");
 const credit = document.querySelector("#credit");
 const debit = document.querySelector("#debit");
 
-function active_credit() {
+function active() {
     credit.addEventListener("click", () => {
         credit.classList.add("active");
         if(credit.classList.contains("active")){
@@ -33,4 +33,4 @@ function active_credit() {
         }
     })
 }
-active_credit();
+active();
