@@ -13,6 +13,10 @@ const debit = document.querySelector("#debit");
 function active() {
     credit.addEventListener("click", () => {
         credit.classList.add("active");
+        credit.classList.add("fade-in-top");
+        credit.addEventListener("animationend", () => {
+            credit.classList.remove("fade-in-top")
+        });
         if(credit.classList.contains("active")){
             tout.classList.remove("active");
             debit.classList.remove("active");
@@ -20,6 +24,10 @@ function active() {
     })
     debit.addEventListener("click", () => {
         debit.classList.add("active");
+        debit.classList.add("fade-in-right");
+        debit.addEventListener("animationend", () => {
+            debit.classList.remove("fade-in-right")
+        });
         if(debit.classList.contains("active")){
             tout.classList.remove("active");
             credit.classList.remove("active");
@@ -27,6 +35,10 @@ function active() {
     })
     tout.addEventListener("click", () => {
         tout.classList.add("active");
+        tout.classList.add("fade-in-left");
+        tout.addEventListener("animationend", () => {
+            tout.classList.remove("fade-in-left")
+        });
         if(tout.classList.contains("active")){
             debit.classList.remove("active");
             credit.classList.remove("active");
@@ -34,3 +46,6 @@ function active() {
     })
 }
 active();
+
+
+const operator = document.querySelector("#operator");
