@@ -90,6 +90,10 @@ function div(){
 
     const div0 = document.createElement("div");
     div0.setAttribute("class", `operation ${operator.value}`);
+    div0.classList.add("fade-in-left");
+    div0.addEventListener("animationend", () => {
+        div0.classList.remove("fade-in-left");
+    })
     const div1 = document.createElement("div");
     div1.setAttribute("class", "grid-x grid-padding-x align-middle");
     const div2_1 = document.createElement("div");
