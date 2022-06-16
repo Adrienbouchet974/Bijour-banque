@@ -87,12 +87,28 @@ add_operation();
 function div(){
     const overlay = document.querySelector(".reveal-overlay");
         overlay.style.display = "none";
-        const div = document.createElement("div");
-        div.setAttribute("class", "operation credit");
+        const div0 = document.createElement("div");
+        div0.setAttribute("class", "operation credit");
+        const div1 = document.createElement("div");
+        div1.setAttribute("class", "grid-x grid-padding-x align-middle");
+        const div2_1 = document.createElement("div");
+        div2_1.setAttribute("class", "cell shrink");
+        const div2_2 = document.createElement("div");
+        div2_2.setAttribute("class", "cell auto");
+        const div2_3 = document.createElement("div");
+        div2_3.setAttribute("class", "cell small-3 text-right");
         // const text = document.createTextNode(`<!-- operation -->`);
         // main.appendChild(text);
-        main.appendChild(div);
-        console.log(main.lastChild)
+        main.appendChild(div0);
+        const div_operation = main.lastChild;
+        div_operation.setAttribute("id", "last");
+        div_operation.appendChild(div1);
+        const div_grid = document.querySelector("#last");
+        const div_cell = div_grid.lastChild;
+        div_cell.appendChild(div2_1);
+        div_cell.appendChild(div2_2);
+        div_cell.appendChild(div2_3);
+        
 }
 
 function add_div(){
