@@ -101,9 +101,9 @@ function div(){
         // main.appendChild(text);
         main.appendChild(div0);
         const div_operation = main.lastChild;
-        div_operation.setAttribute("id", "last");
+        div_operation.setAttribute("id", `${titre.value}`);
         div_operation.appendChild(div1);
-        const div_grid = document.querySelector("#last");
+        const div_grid = document.querySelector(`#${titre.value}`);
         const div_cell = div_grid.lastChild;
         div_cell.appendChild(div2_1);
         div_cell.appendChild(div2_2);
