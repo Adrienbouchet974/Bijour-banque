@@ -58,5 +58,39 @@ function active() {
 active();
 
 
-const operator = document.querySelector("#operator");
-console.log(main)
+
+
+function add_operation(){
+    const operator = document.querySelector("#operator");
+    operator.addEventListener("click", () => {
+        console.log(operator.value);
+    })
+    
+    const titre = document.querySelector("#titre");
+    titre.addEventListener("input", () => {
+        console.log(titre.value);
+    })
+
+    const desc = document.querySelector("#desc");
+    desc.addEventListener("input", () => {
+        console.log(desc.value);
+    })
+
+    const montant = document.querySelector("#montant");
+    montant.addEventListener("input", () => {
+        console.log(montant.value);
+    })
+
+}
+add_operation();
+
+function add_div(){
+    const form = document.querySelector("#operationForm");
+    form.addEventListener("submit", (add_div) => {
+        add_div.preventDefault();
+        const div = document.querySelector(".reveal-overlay");
+        div.style.display = "none";
+
+    });
+}
+add_div();
