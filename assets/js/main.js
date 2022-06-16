@@ -63,27 +63,6 @@ const titre = document.querySelector("#titre");
 const desc = document.querySelector("#desc");
 const montant = document.querySelector("#montant");
 
-
-function add_operation(){
-    operator.addEventListener("click", () => {
-        console.log(operator.value);
-    })
-    
-    titre.addEventListener("input", () => {
-        console.log(titre.value);
-    })
-
-    desc.addEventListener("input", () => {
-        console.log(desc.value);
-    })
-
-    montant.addEventListener("input", () => {
-        console.log(montant.value);
-    })
-
-}
-add_operation();
-
 function div(){
     const overlay = document.querySelector(".reveal-overlay");
     overlay.style.display = "none";
