@@ -58,25 +58,25 @@ function active() {
 active();
 
 
+const operator = document.querySelector("#operator");
+const titre = document.querySelector("#titre");
+const desc = document.querySelector("#desc");
+const montant = document.querySelector("#montant");
 
 
 function add_operation(){
-    const operator = document.querySelector("#operator");
     operator.addEventListener("click", () => {
         console.log(operator.value);
     })
     
-    const titre = document.querySelector("#titre");
     titre.addEventListener("input", () => {
         console.log(titre.value);
     })
 
-    const desc = document.querySelector("#desc");
     desc.addEventListener("input", () => {
         console.log(desc.value);
     })
 
-    const montant = document.querySelector("#montant");
     montant.addEventListener("input", () => {
         console.log(montant.value);
     })
@@ -86,29 +86,74 @@ add_operation();
 
 function div(){
     const overlay = document.querySelector(".reveal-overlay");
-        overlay.style.display = "none";
-        const div0 = document.createElement("div");
-        div0.setAttribute("class", "operation credit");
-        const div1 = document.createElement("div");
-        div1.setAttribute("class", "grid-x grid-padding-x align-middle");
-        const div2_1 = document.createElement("div");
-        div2_1.setAttribute("class", "cell shrink");
-        const div2_2 = document.createElement("div");
-        div2_2.setAttribute("class", "cell auto");
-        const div2_3 = document.createElement("div");
-        div2_3.setAttribute("class", "cell small-3 text-right");
-        // const text = document.createTextNode(`<!-- operation -->`);
-        // main.appendChild(text);
-        main.appendChild(div0);
-        const div_operation = main.lastChild;
-        div_operation.setAttribute("id", `${titre.value}`);
-        div_operation.appendChild(div1);
-        const div_grid = document.querySelector(`#${titre.value}`);
-        const div_cell = div_grid.lastChild;
-        div_cell.appendChild(div2_1);
-        div_cell.appendChild(div2_2);
-        div_cell.appendChild(div2_3);
-        
+    overlay.style.display = "none";
+
+    const div0 = document.createElement("div");
+    div0.setAttribute("class", `operation ${operator.value}`);
+    const div1 = document.createElement("div");
+    div1.setAttribute("class", "grid-x grid-padding-x align-middle");
+    const div2_1 = document.createElement("div");
+    div2_1.setAttribute("class", "cell shrink");
+    div2_1.setAttribute("id", "div2_1");
+    const div2_2 = document.createElement("div");
+    div2_2.setAttribute("class", "cell auto");
+    div2_2.setAttribute("id", "div2_2");
+    const div2_3 = document.createElement("div");
+    div2_3.setAttribute("class", "cell small-3 text-right");
+    div2_3.setAttribute("id", "div2_3");
+    const div2_1_1 = document.createElement("div");
+    div2_1_1.setAttribute("class", "picto");
+    div2_1_1.setAttribute("id", "picto");
+    const div_base2_2 = document.createElement("div");
+    div_base2_2.setAttribute("id", "cell_auto");
+    const div_base2_3 = document.createElement("div");
+    div_base2_3.setAttribute("id", "small");
+    const img = document.createElement("img");
+    if(operator.value == "credit"){
+        img.setAttribute("src", "./assets/images/sac-dargent.png");
+    };
+    if(operator.value == "debit"){
+        img.setAttribute("src", "./assets/images/depenses.png");
+    };
+
+    const h2 = document.createElement("h2");
+    h2.textContent = `${titre.value}`;
+    const small_text = document.createElement("small");
+    small_text.textContent = `${desc.value}`;
+    const small_nombre = document.createElement("small");
+    small_nombre.textContent = `test%`;
+    const p = document.createElement("p");
+    p.setAttribute("class", "count");
+    p.textContent = `${montant.value}€`;
+
+    main.appendChild(div0);
+    const div_operation = main.lastChild;
+    div_operation.setAttribute("id", `${titre.value}`);
+    div_operation.appendChild(div1);
+
+    const div_grid = document.querySelector(`#${titre.value}`);
+    const div_cell = div_grid.lastChild;
+    div_cell.appendChild(div2_1);
+    div_cell.appendChild(div2_2);
+    div_cell.appendChild(div2_3);
+
+    const div_picto = document.querySelector("#div2_1");
+    div_picto.appendChild(div2_1_1);
+    const div_cell_auto = document.querySelector("#div2_2");
+    div_cell_auto.appendChild(div_base2_2);
+    const div_small = document.querySelector("#div2_3");
+    div_small.appendChild(div_base2_3);
+
+    const picto = document.querySelector("#picto");
+    picto.appendChild(img);
+    const cell = document.querySelector("#cell_auto");
+    cell.appendChild(h2);
+    cell.appendChild(small_text);
+    const small = document.querySelector("#small");
+    small.appendChild(p);
+    small.appendChild(small_nombre);
+
+
 }
 
 function add_div(){
