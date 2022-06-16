@@ -88,9 +88,13 @@ function add_div(){
     const form = document.querySelector("#operationForm");
     form.addEventListener("submit", (add_div) => {
         add_div.preventDefault();
-        const div = document.querySelector(".reveal-overlay");
-        div.style.display = "none";
-
+        const overlay = document.querySelector(".reveal-overlay");
+        overlay.style.display = "none";
+        const div = document.createElement("div");
+        div.setAttribute("class", "operation credit");
+        // const text = document.createTextNode(`<!-- operation -->`);
+        // main.appendChild(text);
+        main.appendChild(div);
     });
 }
 add_div();
