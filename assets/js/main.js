@@ -145,7 +145,20 @@ function add_div(){
     form.addEventListener("submit", (add_div) => {
         add_div.preventDefault();
         div();
-        generateData();
+        // generateData();
+        const test = document.querySelectorAll("#solde");
+        console.log(test)
+        // const test2 = test.textContent.split("€")[0];
+        // const test3 = test2.toString();
+        // console.log(test3);
+        // const test4 = Number(test3);
+        // console.log(test4);
+        if(operator.value == "credit"){
+            test.textContent = 2560 + Number(montant.value);
+        }
+        if(operator.value == "debit"){
+            test.textContent = 2560 - Number(montant.value);
+        }
     });
 }
 add_div();
