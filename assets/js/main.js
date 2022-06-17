@@ -14,11 +14,11 @@ const main = document.querySelector("#main");
 function active() {
     credit.addEventListener("click", () => {
         credit.classList.add("active");
-        credit.classList.add("fade-in-top");
-        main.classList.add("fade-in-top");
+        credit.classList.add("fade-in-fwd");
+        main.classList.add("fade-in-fwd");
         credit.addEventListener("animationend", () => {
-            credit.classList.remove("fade-in-top");
-            main.classList.remove("fade-in-top");
+            credit.classList.remove("fade-in-fwd");
+            main.classList.remove("fade-in-fwd");
         });
         if(credit.classList.contains("active")){
             main.style.display = "none";
