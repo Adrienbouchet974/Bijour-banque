@@ -63,11 +63,6 @@ const titre = document.querySelector("#titre");
 const desc = document.querySelector("#desc");
 const montant = document.querySelector("#montant");
 
-function point(){
-    datapoints.push((Number(`${montant.value}`)));
-    console.log(datapoints)
-}
-
 function div(){
     const overlay = document.querySelector(".reveal-overlay");
     overlay.style.display = "none";
@@ -149,8 +144,8 @@ function add_div(){
     const form = document.querySelector("#operationForm");
     form.addEventListener("submit", (add_div) => {
         add_div.preventDefault();
-        point();
         div();
+        generateData();
     });
 }
 add_div();
