@@ -146,7 +146,8 @@ function div(){
 
 function percent(){
     small_nombre.setAttribute("id", `valeur${i}`);
-    console.log(document.querySelector(`#valeur${i++}`));
+    const valeur = document.querySelector(`#valeur${i++}`);
+    valeur.textContent = Number.parseFloat((Number(montant.value) * 100) / Number(solde.textContent)).toFixed(2) + "%";
 }
 
 function add_div(){
