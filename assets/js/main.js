@@ -65,6 +65,7 @@ const montant = document.querySelector("#montant");
 let i = 0;
 const small_nombre = document.createElement("small");
 const solde = document.querySelector("#solde");
+const form = document.querySelector("#operationForm");
 
 function div(){
     const overlay = document.querySelector(".reveal-overlay");
@@ -157,7 +158,6 @@ function percent(){
 }
 
 function add_div(){
-    const form = document.querySelector("#operationForm");
     form.addEventListener("submit", (add_div) => {
         add_div.preventDefault();
         div();
@@ -179,7 +179,22 @@ function add_div(){
             }
         }
         generateData();
+        operator.value = "--"
+        titre.value = "";
+        desc.value = "";
+        montant.value = "";
     });
 }
 add_div();
 
+// function test(){
+//     form.addEventListener("input", () => {
+//         console.log(titre.value);
+//         form.addEventListener("submit", () => {
+//             if(titre.value == titre.value){
+//                 console.log("pas le droit");
+//             }
+//         })
+//     })
+// }
+// test()
