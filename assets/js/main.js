@@ -146,18 +146,28 @@ function add_div(){
         add_div.preventDefault();
         div();
         // generateData();
-        const test = document.querySelectorAll("#solde");
-        console.log(test)
+        const solde = document.querySelector("#solde");
         // const test2 = test.textContent.split("€")[0];
         // const test3 = test2.toString();
         // console.log(test3);
         // const test4 = Number(test3);
         // console.log(test4);
         if(operator.value == "credit"){
-            test.textContent = 2560 + Number(montant.value);
+            console.log(solde.textContent)
+            if(solde.textContent == "2 560.00€"){
+                solde.textContent = 2560 + Number(montant.value);
+            }
+            else{
+                solde.textContent = Number(solde.textContent) + Number(montant.value);
+            }
         }
         if(operator.value == "debit"){
-            test.textContent = 2560 - Number(montant.value);
+            if(solde.textContent == "2 560.00€"){
+                solde.textContent = 2560 - Number(montant.value);
+            }
+            else{
+                solde.textContent = Number(solde.textContent) - Number(montant.value);
+            }
         }
     });
 }
