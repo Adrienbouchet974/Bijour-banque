@@ -92,30 +92,30 @@ function div(){
     const div0 = document.createElement("div");
     div0.setAttribute("class", `operation ${operator.value}`);
     div0.classList.add("fade-in-left");
-    if(div0.classList = "operation credit"){
-        credit.addEventListener("click", () => {
-            div0.removeAttribute("style", "display: none");
-        });
-        debit.addEventListener("click", () => {
-            div0.setAttribute("style", "display: none");
-        })
-        tout.addEventListener("click", () => {
-            div0.removeAttribute("style", "display: none");
-        })
-    }
-    if(div0.classList = "operation debit"){
-        credit.addEventListener("click", () => {
-            div0.setAttribute("style", "display: none");
-        });
-        debit.addEventListener("click", () => {
-            div0.removeAttribute("style", "display: none");
-        })
-        tout.addEventListener("click", () => {
-            div0.removeAttribute("style", "display: none");
-        })
-    }
     div0.addEventListener("animationend", () => {
         div0.classList.remove("fade-in-left");
+        if(div0.classList.value == "operation credit"){
+            debit.addEventListener("click", () => {
+                div0.setAttribute("style", "display: none");
+            })
+            credit.addEventListener("click", () => {
+                div0.removeAttribute("style", "display: none");
+            });
+            tout.addEventListener("click", () => {
+                div0.removeAttribute("style", "display: none");
+            })
+        }
+        if(div0.classList.value == "operation debit"){
+            credit.addEventListener("click", () => {
+                div0.setAttribute("style", "display: none");
+            });
+            debit.addEventListener("click", () => {
+                div0.removeAttribute("style", "display: none");
+            })
+            tout.addEventListener("click", () => {
+                div0.removeAttribute("style", "display: none");
+            })
+        }
     })
     
     const div1 = document.createElement("div");
