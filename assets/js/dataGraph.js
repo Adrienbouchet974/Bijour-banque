@@ -58,7 +58,7 @@ chart = new Chart(context, config);
 
 /* Générer des données aléatoires */
 function generateData() {
-  randomTemperature = Number(montant.value); // Deux chiffres après la virgule
+  randomTemperature = solde.textContent; // Deux chiffres après la virgule
   addTemperature(new Date().toLocaleTimeString(), randomTemperature);
 }
 
