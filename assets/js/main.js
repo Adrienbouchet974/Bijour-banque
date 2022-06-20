@@ -147,7 +147,13 @@ function div(){
 function percent(){
     small_nombre.setAttribute("id", `valeur${i}`);
     const valeur = document.querySelector(`#valeur${i++}`);
-    valeur.textContent = Number.parseFloat((Number(montant.value) * 100) / Number(solde.textContent)).toFixed(2) + "%";
+    if(solde.textContent == "2 560.00€"){
+        solde.textContent = 2560;
+        valeur.textContent = Number.parseFloat((Number(montant.value) * 100) / Number(solde.textContent)).toFixed(2) + "%";
+    }else{
+        solde.textContent + Number(montant.value);
+        valeur.textContent = Number.parseFloat((Number(montant.value) * 100) / Number(solde.textContent)).toFixed(2) + "%";
+    }
 }
 
 function add_div(){
@@ -155,6 +161,7 @@ function add_div(){
     form.addEventListener("submit", (add_div) => {
         add_div.preventDefault();
         div();
+        percent();
         if(operator.value == "credit"){
             if(solde.textContent == "2 560.00€"){
                 solde.textContent = 2560 + Number(montant.value);
@@ -172,7 +179,6 @@ function add_div(){
             }
         }
         generateData();
-        percent();
     });
 }
 add_div();
