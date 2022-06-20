@@ -62,6 +62,9 @@ const operator = document.querySelector("#operator");
 const titre = document.querySelector("#titre");
 const desc = document.querySelector("#desc");
 const montant = document.querySelector("#montant");
+let i = 0;
+const small_nombre = document.createElement("small");
+const solde = document.querySelector("#solde");
 
 function div(){
     const overlay = document.querySelector(".reveal-overlay");
@@ -103,7 +106,8 @@ function div(){
     h2.textContent = `${titre.value}`;
     const small_text = document.createElement("small");
     small_text.textContent = `${desc.value}`;
-    const small_nombre = document.createElement("small");
+    // const small_nombre = document.createElement("small");
+    small_nombre.setAttribute("id", "valeur");
     small_nombre.textContent = `test%`;
     const p = document.createElement("p");
     p.setAttribute("class", "count");
@@ -140,7 +144,10 @@ function div(){
 
 }
 
-const solde = document.querySelector("#solde");
+function percent(){
+    small_nombre.setAttribute("id", `valeur${i}`);
+    console.log(document.querySelector(`#valeur${i++}`));
+}
 
 function add_div(){
     const form = document.querySelector("#operationForm");
@@ -148,7 +155,6 @@ function add_div(){
         add_div.preventDefault();
         div();
         if(operator.value == "credit"){
-            console.log(solde.textContent)
             if(solde.textContent == "2 560.00€"){
                 solde.textContent = 2560 + Number(montant.value);
             }
@@ -165,6 +171,7 @@ function add_div(){
             }
         }
         generateData();
+        percent();
     });
 }
 add_div();
