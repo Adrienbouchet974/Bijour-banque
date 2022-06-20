@@ -10,18 +10,25 @@ const tout = document.querySelector("#tout");
 const credit = document.querySelector("#credit");
 const debit = document.querySelector("#debit");
 const main = document.querySelector("#main");
+const op_debit = main.querySelectorAll("div.operation.debit");
+const op_credit = main.querySelectorAll("div.operation.credit");
 
 function active() {
     credit.addEventListener("click", () => {
         credit.classList.add("active");
         credit.classList.add("fade-in-fwd");
         main.classList.add("fade-in-fwd");
+        op_debit.forEach(element => {
+            element.style.display = "none"
+        });
+        op_credit.forEach(element => {
+            element.style.display = ""
+        });
         credit.addEventListener("animationend", () => {
             credit.classList.remove("fade-in-fwd");
             main.classList.remove("fade-in-fwd");
         });
         if(credit.classList.contains("active")){
-            main.style.display = "none";
             tout.classList.remove("active");
             debit.classList.remove("active");
         }
@@ -30,12 +37,17 @@ function active() {
         debit.classList.add("active");
         debit.classList.add("fade-in-right");
         main.classList.add("fade-in-right");
+        op_credit.forEach(element => {
+            element.style.display = "none"
+        });
+        op_debit.forEach(element => {
+            element.style.display = ""
+        });
         debit.addEventListener("animationend", () => {
             debit.classList.remove("fade-in-right");
             main.classList.remove("fade-in-right");
         });
         if(debit.classList.contains("active")){
-            main.style.display = "none";
             tout.classList.remove("active");
             credit.classList.remove("active");
         }
@@ -44,6 +56,12 @@ function active() {
         tout.classList.add("active");
         tout.classList.add("fade-in-left");
         main.classList.add("fade-in-left");
+        op_credit.forEach(element => {
+            element.style.display = "";
+        });
+        op_debit.forEach(value => {
+            value.style.display = "";
+        });
         tout.addEventListener("animationend", () => {
             tout.classList.remove("fade-in-left");
             main.classList.remove("fade-in-left");
