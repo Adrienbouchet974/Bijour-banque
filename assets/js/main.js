@@ -92,9 +92,32 @@ function div(){
     const div0 = document.createElement("div");
     div0.setAttribute("class", `operation ${operator.value}`);
     div0.classList.add("fade-in-left");
+    if(div0.classList = "operation credit"){
+        credit.addEventListener("click", () => {
+            div0.removeAttribute("style", "display: none");
+        });
+        debit.addEventListener("click", () => {
+            div0.setAttribute("style", "display: none");
+        })
+        tout.addEventListener("click", () => {
+            div0.removeAttribute("style", "display: none");
+        })
+    }
+    if(div0.classList = "operation debit"){
+        credit.addEventListener("click", () => {
+            div0.setAttribute("style", "display: none");
+        });
+        debit.addEventListener("click", () => {
+            div0.removeAttribute("style", "display: none");
+        })
+        tout.addEventListener("click", () => {
+            div0.removeAttribute("style", "display: none");
+        })
+    }
     div0.addEventListener("animationend", () => {
         div0.classList.remove("fade-in-left");
     })
+    
     const div1 = document.createElement("div");
     div1.setAttribute("class", "grid-x grid-padding-x align-middle");
     const div2_1 = document.createElement("div");
@@ -159,7 +182,6 @@ function div(){
     const small = document.querySelector(`#${titre.value}_small`);
     small.appendChild(p);
     small.appendChild(small_nombre);
-
 
 }
 
