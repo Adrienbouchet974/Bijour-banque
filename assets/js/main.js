@@ -219,11 +219,3 @@ function add_div(){
     });
 }
 add_div();
-
-// credit.addEventListener("click", () => {
-//     const result = datapoints.filter(check_value);
-//     function check_value(age) {
-//         return age >= 1200 | age == 775;
-//     }
-//     console.log(result)
-// })
