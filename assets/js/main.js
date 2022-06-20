@@ -1,11 +1,3 @@
-// const result = datapoints.filter(check_value);
-
-// function check_value(age) {
-//     return age >= 1200 | age == 775;
-// }
-
-// console.log(result)
-
 const tout = document.querySelector("#tout");
 const credit = document.querySelector("#credit");
 const debit = document.querySelector("#debit");
@@ -204,21 +196,22 @@ function add_div(){
         percent();
         if(operator.value == "credit"){
             if(solde.textContent == "2 560.00€"){
-                solde.textContent = 2560 + Number(montant.value);
+                solde.textContent = (2560 + Number(montant.value)).toFixed(2);
             }
             else{
-                solde.textContent = Number(solde.textContent) + Number(montant.value);
+                solde.textContent = (Number(solde.textContent) + Number(montant.value)).toFixed(2);
             }
         }
         if(operator.value == "debit"){
             if(solde.textContent == "2 560.00€"){
-                solde.textContent = 2560 - Number(montant.value);
+                solde.textContent = (2560 - Number(montant.value)).toFixed(2);
             }
             else{
-                solde.textContent = Number(solde.textContent) - Number(montant.value);
+                solde.textContent = (Number(solde.textContent) - Number(montant.value)).toFixed(2);
             }
         }
         generateData();
+        solde.textContent += "€";
         operator.value = "--"
         titre.value = "";
         desc.value = "";
@@ -227,14 +220,10 @@ function add_div(){
 }
 add_div();
 
-// function test(){
-//     form.addEventListener("input", () => {
-//         console.log(titre.value);
-//         form.addEventListener("submit", () => {
-//             if(titre.value == titre.value){
-//                 console.log("pas le droit");
-//             }
-//         })
-//     })
-// }
-// test()
+// credit.addEventListener("click", () => {
+//     const result = datapoints.filter(check_value);
+//     function check_value(age) {
+//         return age >= 1200 | age == 775;
+//     }
+//     console.log(result)
+// })
