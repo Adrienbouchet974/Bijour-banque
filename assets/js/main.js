@@ -140,18 +140,13 @@ function div(){
 
 }
 
+const solde = document.querySelector("#solde");
+
 function add_div(){
     const form = document.querySelector("#operationForm");
     form.addEventListener("submit", (add_div) => {
         add_div.preventDefault();
         div();
-        // generateData();
-        const solde = document.querySelector("#solde");
-        // const test2 = test.textContent.split("€")[0];
-        // const test3 = test2.toString();
-        // console.log(test3);
-        // const test4 = Number(test3);
-        // console.log(test4);
         if(operator.value == "credit"){
             console.log(solde.textContent)
             if(solde.textContent == "2 560.00€"){
@@ -169,6 +164,7 @@ function add_div(){
                 solde.textContent = Number(solde.textContent) - Number(montant.value);
             }
         }
+        generateData();
     });
 }
 add_div();
