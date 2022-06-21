@@ -211,7 +211,7 @@ function add_div(){
             }
         }
         generateData();
-        solde.textContent += "€";
+        // solde.textContent += "€";
         operator.value = "--"
         titre.value = "";
         desc.value = "";
