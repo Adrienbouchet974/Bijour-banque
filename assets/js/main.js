@@ -142,7 +142,7 @@ function div(){
     small_text.textContent = `${desc.value}`;
     // const small_nombre = document.createElement("small");
     small_nombre.setAttribute("id", "valeur");
-    small_nombre.textContent = `test%`;
+    // small_nombre.textContent = `test%`;
     const p = document.createElement("p");
     p.setAttribute("class", "count");
     p.textContent = `${montant.value}€`;
