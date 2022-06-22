@@ -68,14 +68,12 @@ function active() {
 active();
 
 
-// const operator = document.querySelector("#operator");
-// const titre = document.querySelector("#titre");
-// const desc = document.querySelector("#desc");
-// const montant = document.querySelector("#montant");
-// let i = 0;
-// const small_nombre = document.createElement("small");
-// const solde = document.querySelector("#solde");
-// const form = document.querySelector("#operationForm");
+const operator = document.querySelector("#operator");
+const titre = document.querySelector("#titre");
+const desc = document.querySelector("#desc");
+const montant = document.querySelector("#montant");
+const solde = document.querySelector("#solde");
+const form = document.querySelector("#operationForm");
 
 // function div(){
 //     const overlay = document.querySelector(".reveal-overlay");
@@ -223,26 +221,12 @@ active();
 
 /* réflexions */
 
-const operations = [
-    {
-        titre: "salaire",
-        desc: "mois de Septembre",
-        montant: 1200,
-        percent: 100,
-        type: "crédit"
-    },
-    {
-        titre: "restaurant",
-        desc: "mcdo",
-        montant: 12,
-        percent: 10,
-        type: "débit"
-    }
-]
+const operations = []
 
 function render() {
     operations.forEach( (operation) => {
-        const template = ` <div class="grid-x grid-padding-x align-middle">
+        const template = ` <div class="operation credit">
+        <div class="grid-x grid-padding-x align-middle">
         <div class="cell shrink">
         <div class="picto">
             <img src="./assets/images/sac-dargent.png" alt="credit" />
@@ -257,7 +241,8 @@ function render() {
         <div class="cell small-3 text-right">
         <div>
             <p class="count">${operation.montant}</p>
-            <small>${operation.percent}</small>
+            <small>${operation.percent}` + "%" + `</small>
+        </div>
         </div>
         </div>
         </div>`
@@ -266,22 +251,46 @@ function render() {
     })
 }
 
+// à la solution du formulaire
 function filter(type) {
     const filter = operations.filter((operation) => operation.type === type)
     console.log(filter);
 }
-filter("débit");
-filter("crédit");
 
-// à la solution du formulaire
+filter("debit");
+filter("credit");
 
-const new_operations = {
-    titre: "quelque chose",
-    desc: "décembre",
-    montant: 500,
-    percent: 19,
-    type: "crédit"
+const total_value = solde.textContent;
+const total_slice = total_value.slice(0, total_value.length - 4);
+const total = total_slice.replace(" ", "");
+const argent = Number(total);
+
+function data_anim() {
+    document.querySelector("#data").classList.add("fade-in-left");
+    document.querySelector("#data").addEventListener("animationend", () => {
+        document.querySelector("#data").classList.remove("fade-in-left");
+    })
 }
 
-operations.push(new_operations);
-render();
+function formulaire(){
+    form.addEventListener("submit", (e) => {
+        e.preventDefault;
+        const new_operations = {
+            titre: titre.value,
+            desc: desc.value,
+            montant: montant.value,
+            percent: Number((montant.value * 100) / argent).toFixed(2),
+            type: operator.value
+        }
+        console.log(new_operations.type);
+        operations.push(new_operations);
+        data_anim();
+        operator.value = "--";
+        titre.value = "";
+        desc.value = "";
+        montant.value = "";
+        render();
+    })
+}
+formulaire()
+
