@@ -227,28 +227,36 @@ function render() {
     operations.forEach( (operation) => {
         const template = `
         <div class="operation ${operation.type}">
-            <div class="grid-x grid-padding-x align-middle">
-                <div class="cell shrink">
-                    <div class="picto">
-                        <img src="./assets/images/sac-dargent.png" alt="credit" />
-                    </div>
-                </div>
-                    <div class="cell auto">
-                        <div>
-                            <h2>${operation.titre}</h2>
-                            <small>${operation.desc}</small>
-                        </div>
-                    </div>
-                <div class="cell small-3 text-right">
-                    <div>
-                        <p class="count">${operation.montant}` + "€" + `</p>
-                        <small>${operation.percent}` + "%" + `</small>
-                    </div>
-                </div>
-            </div>
+        <div class="grid-x grid-padding-x align-middle">
+        <div class="cell shrink">
+        <div class="picto">
+        `;
+        const template_credit = `<img src="./assets/images/sac-dargent.png" alt="credit" />`
+        const template_debit = `<img src="./assets/images/depenses.png" alt="credit" />`
+        const template2 =
+        `</div>
+        </div>
+        <div class="cell auto">
+        <div>
+        <h2>${operation.titre}</h2>
+        <small>${operation.desc}</small>
+        </div>
+        </div>
+        <div class="cell small-3 text-right">
+        <div>
+        <p class="count">${operation.montant}` + "€" + `</p>
+        <small>${operation.percent}` + "%" + `</small>
+        </div>
+        </div>
+        </div>
         </div>`
 
-        document.querySelector("#data").innerHTML += template;
+        if(operation.type === "credit"){
+            document.querySelector("#data").innerHTML += template + template_credit + template2;
+        }
+        if(operation.type === "debit"){
+            document.querySelector("#data").innerHTML += template + template_debit + template2;
+        }
     })
 }
 
@@ -265,14 +273,47 @@ credit.addEventListener("click", () => {
         if(document.classList.contains("credit")){
             document.classList.add("fade-in-fwd");
             document.style.display = "";
+            document.addEventListener("animationend", () => {
+                document.classList.remove("fade-in-fwd");
+            })
         }else{
             document.style.display = "none";
         }
     })
-    // div.style.diplay = "none";
     filter("credit");
 })
 debit.addEventListener("click", () => {
+    const doc = document.querySelectorAll("#data > div");
+    doc.forEach( document => {
+        console.log(document.classList.contains("debit"))
+        if(document.classList.contains("debit")){
+            document.classList.add("fade-in-right");
+            document.addEventListener("animationend", () => {
+                document.classList.remove("fade-in-right");
+            })
+            document.style.display = "";
+        }else{
+            document.style.display = "none";
+        }
+    })
+    filter("debit");
+})
+tout.addEventListener("click", () => {
+    const doc = document.querySelectorAll("#data > div");
+    doc.forEach( document => {
+        document.classList.add("fade-in-left");
+        document.addEventListener("animationend", () => {
+            document.classList.remove("fade-in-left");
+        })
+        document.style.display = "";
+        // console.log(document.classList.contains("debit"))
+        // if(document.classList.contains("debit") || document.classList.contains("credit")){
+        //     document.classList.add("fade-in-left");
+        //     document.style.display = "";
+        // }else{
+        //     document.style.display = "none";
+        // }
+    })
     filter("debit");
 })
 
