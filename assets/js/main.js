@@ -74,10 +74,9 @@ const desc = document.querySelector("#desc");
 const montant = document.querySelector("#montant");
 const solde = document.querySelector("#solde");
 const form = document.querySelector("#operationForm");
+const overlay = document.querySelector(".reveal-overlay");
 
 // function div(){
-//     const overlay = document.querySelector(".reveal-overlay");
-//     overlay.style.display = "none";
 
 //     const div0 = document.createElement("div");
 //     div0.setAttribute("class", `operation ${operator.value}`);
@@ -225,26 +224,27 @@ const operations = []
 
 function render() {
     operations.forEach( (operation) => {
-        const template = ` <div class="operation credit">
-        <div class="grid-x grid-padding-x align-middle">
-        <div class="cell shrink">
-        <div class="picto">
-            <img src="./assets/images/sac-dargent.png" alt="credit" />
-        </div>
-        </div>
-        <div class="cell auto">
-        <div>
-            <h2>${operation.titre}</h2>
-            <small>${operation.desc}</small>
-        </div>
-        </div>
-        <div class="cell small-3 text-right">
-        <div>
-            <p class="count">${operation.montant}</p>
-            <small>${operation.percent}` + "%" + `</small>
-        </div>
-        </div>
-        </div>
+        const template = `
+        <div class="operation ${operation.type}">
+            <div class="grid-x grid-padding-x align-middle">
+                <div class="cell shrink">
+                    <div class="picto">
+                        <img src="./assets/images/sac-dargent.png" alt="credit" />
+                    </div>
+                </div>
+                    <div class="cell auto">
+                        <div>
+                            <h2>${operation.titre}</h2>
+                            <small>${operation.desc}</small>
+                        </div>
+                    </div>
+                <div class="cell small-3 text-right">
+                    <div>
+                        <p class="count">${operation.montant}` + "€" + `</p>
+                        <small>${operation.percent}` + "%" + `</small>
+                    </div>
+                </div>
+            </div>
         </div>`
 
         document.querySelector("#data").innerHTML += template;
@@ -252,13 +252,7 @@ function render() {
 }
 
 // à la solution du formulaire
-function filter(type) {
-    const filter = operations.filter((operation) => operation.type === type)
-    console.log(filter);
-}
 
-filter("debit");
-filter("credit");
 
 const total_value = solde.textContent;
 const total_slice = total_value.slice(0, total_value.length - 4);
@@ -275,6 +269,8 @@ function data_anim() {
 function formulaire(){
     form.addEventListener("submit", (e) => {
         e.preventDefault;
+        const overlay = document.querySelector(".reveal-overlay");
+        overlay.style.display = "none";
         const new_operations = {
             titre: titre.value,
             desc: desc.value,
@@ -282,7 +278,6 @@ function formulaire(){
             percent: Number((montant.value * 100) / argent).toFixed(2),
             type: operator.value
         }
-        console.log(new_operations.type);
         operations.push(new_operations);
         data_anim();
         operator.value = "--";
