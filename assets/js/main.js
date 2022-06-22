@@ -221,6 +221,7 @@ const overlay = document.querySelector(".reveal-overlay");
 /* réflexions */
 
 const operations = []
+const div = document.querySelector("#data");
 
 function render() {
     operations.forEach( (operation) => {
@@ -253,28 +254,39 @@ function render() {
 
 // à la solution du formulaire
 function filter(type) {
-    const filter = operations.filter((operation) => operation.type === type)
+    const filter = operations.filter((operation) => operation.type === type);
     console.log(filter);
 }
 
 credit.addEventListener("click", () => {
+    const doc = document.querySelectorAll("#data > div");
+    doc.forEach( document => {
+        console.log(document.classList.contains("credit"))
+        if(document.classList.contains("credit")){
+            document.classList.add("fade-in-fwd");
+            document.style.display = "";
+        }else{
+            document.style.display = "none";
+        }
+    })
+    // div.style.diplay = "none";
     filter("credit");
 })
 debit.addEventListener("click", () => {
     filter("debit");
 })
 
+function data_anim() {
+    div.classList.add("fade-in-left");
+    div.addEventListener("animationend", () => {
+        div.classList.remove("fade-in-left");
+    })
+}
+
 const total_value = solde.textContent;
 const total_slice = total_value.slice(0, total_value.length - 4);
 const total = total_slice.replace(" ", "");
 const argent = Number(total);
-
-function data_anim() {
-    document.querySelector("#data").classList.add("fade-in-left");
-    document.querySelector("#data").addEventListener("animationend", () => {
-        document.querySelector("#data").classList.remove("fade-in-left");
-    })
-}
 
 function formulaire(){
     form.addEventListener("submit", (e) => {
