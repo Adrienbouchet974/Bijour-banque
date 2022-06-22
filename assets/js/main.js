@@ -327,7 +327,7 @@ function data_anim() {
 const total_value = solde.textContent;
 const total_slice = total_value.slice(0, total_value.length - 4);
 const total = total_slice.replace(" ", "");
-const argent = Number(total);
+let argent = Number(total);
 
 function formulaire(){
     form.addEventListener("submit", (e) => {
@@ -341,6 +341,13 @@ function formulaire(){
             percent: Number((montant.value * 100) / argent).toFixed(2),
             type: operator.value
         }
+        if(operator.value === "credit"){
+            argent = argent + Number(montant.value);
+        };
+        if(operator.value === "debit"){
+            argent = argent - Number(montant.value);
+        };
+        solde.textContent = Number(argent).toFixed(2) + "€";
         operations.push(new_operations);
         data_anim();
         operator.value = "--";
@@ -348,6 +355,7 @@ function formulaire(){
         desc.value = "";
         montant.value = "";
         render();
+        generateData();
     })
 }
 formulaire()
