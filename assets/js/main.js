@@ -306,13 +306,6 @@ tout.addEventListener("click", () => {
             document.classList.remove("fade-in-left");
         })
         document.style.display = "";
-        // console.log(document.classList.contains("debit"))
-        // if(document.classList.contains("debit") || document.classList.contains("credit")){
-        //     document.classList.add("fade-in-left");
-        //     document.style.display = "";
-        // }else{
-        //     document.style.display = "none";
-        // }
     })
     filter("debit");
 })
