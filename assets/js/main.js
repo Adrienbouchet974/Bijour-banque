@@ -252,7 +252,17 @@ function render() {
 }
 
 // à la solution du formulaire
+function filter(type) {
+    const filter = operations.filter((operation) => operation.type === type)
+    console.log(filter);
+}
 
+credit.addEventListener("click", () => {
+    filter("credit");
+})
+debit.addEventListener("click", () => {
+    filter("debit");
+})
 
 const total_value = solde.textContent;
 const total_slice = total_value.slice(0, total_value.length - 4);
