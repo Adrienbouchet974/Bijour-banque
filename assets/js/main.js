@@ -263,13 +263,11 @@ function render() {
 // à la solution du formulaire
 function filter(type) {
     const filter = operations.filter((operation) => operation.type === type);
-    console.log(filter);
 }
 
 credit.addEventListener("click", () => {
     const doc = document.querySelectorAll("#data > div");
     doc.forEach( document => {
-        console.log(document.classList.contains("credit"))
         if(document.classList.contains("credit")){
             document.classList.add("fade-in-fwd");
             document.style.display = "";
@@ -285,7 +283,6 @@ credit.addEventListener("click", () => {
 debit.addEventListener("click", () => {
     const doc = document.querySelectorAll("#data > div");
     doc.forEach( document => {
-        console.log(document.classList.contains("debit"))
         if(document.classList.contains("debit")){
             document.classList.add("fade-in-right");
             document.addEventListener("animationend", () => {
