@@ -358,7 +358,15 @@ function formulaire(){
 formulaire();
 
 document.addEventListener("DOMContentLoaded", () => {
-    console.log(localStorage);
+    if(localStorage.type === "credit"){
+        localStorage.percent = Number((localStorage.montant * 100) / argent).toFixed(2);
+        argent = argent + Number(localStorage.montant);
+    };
+    if(localStorage.type === "debit"){
+        localStorage.percent = Number((localStorage.montant * 100) / argent).toFixed(2);
+        argent = argent - Number(localStorage.montant);
+    };
+    solde.textContent = Number(argent).toFixed(2) + "€";
     operations.push(localStorage);
     render();
     operations.pop();
