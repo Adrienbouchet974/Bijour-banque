@@ -369,5 +369,6 @@ document.addEventListener("DOMContentLoaded", () => {
     solde.textContent = Number(argent).toFixed(2) + "€";
     operations.push(localStorage);
     render();
+    generateData();
     operations.pop();
 })
