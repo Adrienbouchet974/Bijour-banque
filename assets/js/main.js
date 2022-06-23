@@ -223,7 +223,7 @@ const overlay = document.querySelector(".reveal-overlay");
 const operations = []
 const div = document.querySelector("#data");
 
-function render() {
+function render(number) {
     operations.forEach( (operation) => {
         const template = `
         <div class="operation ${operation.type}">
@@ -259,6 +259,7 @@ function render() {
         }
     })
 }
+
 
 // à la solution du formulaire
 function filter(type) {
@@ -346,6 +347,7 @@ function formulaire(){
         montant.value = "";
         render();
         generateData();
+        operations.pop()
     })
 }
 formulaire()
