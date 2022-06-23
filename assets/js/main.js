@@ -223,7 +223,7 @@ const overlay = document.querySelector(".reveal-overlay");
 const operations = []
 const div = document.querySelector("#data");
 
-function render(number) {
+function render() {
     operations.forEach( (operation) => {
         const template = `
         <div class="operation ${operation.type}">
@@ -347,8 +347,19 @@ function formulaire(){
         montant.value = "";
         render();
         generateData();
+        localStorage.setItem("titre", new_operations.titre)
+        localStorage.setItem("desc", new_operations.desc)
+        localStorage.setItem("montant", new_operations.montant)
+        localStorage.setItem("percent", new_operations.percent)
+        localStorage.setItem("type", new_operations.type)
         operations.pop()
     })
 }
-formulaire()
+formulaire();
 
+document.addEventListener("DOMContentLoaded", () => {
+    console.log(localStorage);
+    operations.push(localStorage);
+    render();
+    operations.pop();
+})
