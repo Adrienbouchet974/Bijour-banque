@@ -75,6 +75,7 @@ const montant = document.querySelector("#montant");
 const solde = document.querySelector("#solde");
 const form = document.querySelector("#operationForm");
 const overlay = document.querySelector(".reveal-overlay");
+const small = document.querySelector(".good");
 
 
 const operations = []
@@ -195,7 +196,6 @@ function formulaire(){
         if(operator.value === "debit"){
             argent = argent - Number(montant.value);
         };
-        const small = document.querySelector(".good");
         if(argent > 1000){
             small.textContent = "tu peux te permettre de faire des dépenses 😆";
         }else{
@@ -229,6 +229,11 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.percent = Number((localStorage.montant * 100) / argent).toFixed(2);
         argent = argent - Number(localStorage.montant);
     };
+    if(argent > 1000){
+        small.textContent = "tu peux te permettre de faire des dépenses 😆";
+    }else{
+        small.textContent = "C'est la fin ...☠️";
+    }
     solde.textContent = Number(argent).toFixed(2) + "€";
     operations.push(localStorage);
     render();
