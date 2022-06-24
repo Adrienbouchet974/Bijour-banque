@@ -195,6 +195,12 @@ function formulaire(){
         if(operator.value === "debit"){
             argent = argent - Number(montant.value);
         };
+        const small = document.querySelector(".good");
+        if(argent > 1000){
+            small.textContent = "tu peux te permettre de faire des dépenses 😆";
+        }else{
+            small.textContent = "C'est la fin ...☠️";
+        }
         solde.textContent = Number(argent).toFixed(2) + "€";
         operations.push(new_operations);
         data_anim();
