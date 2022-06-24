@@ -228,4 +228,18 @@ document.addEventListener("DOMContentLoaded", () => {
     render();
     generateData();
     operations.pop();
+
+})
+
+const conversion = document.querySelector("#conversion")
+
+conversion.addEventListener("click", () => {
+    if(conversion.textContent === "Conversion en $"){
+        conversion.textContent = "Conversion en €";
+        solde.textContent = (argent * 1.05).toFixed(2) + "$"
+    }
+    else{
+        conversion.textContent = "Conversion en $";
+        solde.textContent = argent.toFixed(2) + "€"
+    }
 })
