@@ -65,11 +65,12 @@ header {
 
 .convert {
   display: flex;
+  width: 67%;
   justify-content: space-around;
   border: 1px solid grey;
   border-radius: 25px;
   overflow: hidden;
-  margin: 10px 0 20px 0;
+  margin: 0 0 20px 0;
 }
 
 .convert a {
@@ -83,6 +84,11 @@ header {
 .convert a:hover {
   background-color: black;
   color: white;
+}
+
+.nav_convert {
+  display: flex;
+  justify-content: center;
 }
 
 .operation {
