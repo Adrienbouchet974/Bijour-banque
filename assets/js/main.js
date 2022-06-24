@@ -235,11 +235,16 @@ const conversion = document.querySelector("#conversion")
 
 conversion.addEventListener("click", () => {
     if(conversion.textContent === "Conversion en $"){
+        solde.classList.add("fade-in-fwd")
         conversion.textContent = "Conversion en €";
         solde.textContent = (argent * 1.05).toFixed(2) + "$"
     }
     else{
+        solde.classList.add("fade-in-fwd")
         conversion.textContent = "Conversion en $";
         solde.textContent = argent.toFixed(2) + "€"
     }
+    solde.addEventListener("animationend", () => {
+        solde.classList.remove("fade-in-fwd")
+    })
 })
