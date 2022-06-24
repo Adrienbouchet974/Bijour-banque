@@ -63,6 +63,28 @@ header {
   color: white;
 }
 
+.convert {
+  display: flex;
+  justify-content: space-around;
+  border: 1px solid grey;
+  border-radius: 25px;
+  overflow: hidden;
+  margin: 10px 0 20px 0;
+}
+
+.convert a {
+  display: block;
+  flex: 1;
+  text-align: center;
+  padding: 2px 0;
+}
+
+.convert a.active,
+.convert a:hover {
+  background-color: black;
+  color: white;
+}
+
 .operation {
   margin-bottom: 20px;
 }
